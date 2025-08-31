@@ -6,6 +6,9 @@ import { useSession } from 'next-auth/react';
 import { FaTachometerAlt, FaPlusCircle, FaCalendarAlt, FaUsers } from 'react-icons/fa';
 import { MdEditCalendar } from 'react-icons/md';
 import { IoArrowBack } from "react-icons/io5";
+import Logo from '../../../public/assets/logo.png'
+import Image from 'next/image';
+import { PiBagFill } from "react-icons/pi";
 
 export default function AdminLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -21,7 +24,7 @@ export default function AdminLayout({ children }) {
     return (
       <div className="flex items-center justify-center h-screen text-center">
         <h1 className="text-5xl font-bold text-red-600">403 Forbidden</h1>
-        <p className="mt-2">You don’t have access to this page.</p>
+        <p className="mt-2">You dont have access to this page.</p>
       </div>
     );
   }
@@ -29,6 +32,7 @@ export default function AdminLayout({ children }) {
 
   const links = [
     { href: '/userdashboard', label: 'Dashboard', icon: <FaTachometerAlt /> },
+    { href: '/jobs', label: 'Browse Jobs', icon: <PiBagFill />},
     { href: '/userdashboard/create-job', label: 'Create Job', icon: <FaPlusCircle /> },
     { href: '/userdashboard/manage-jobs', label: 'Manage Jobs', icon: <MdEditCalendar />},
         { href: '/', label: 'Back to Home', icon: <IoArrowBack />},
@@ -40,6 +44,7 @@ export default function AdminLayout({ children }) {
     <div className="flex flex-col md:flex-row min-h-screen bg-base-200">
       {/* Sidebar for md+ */}
       <aside className="hidden md:flex md:flex-col md:w-64 bg-neutral text-neutral-content shadow">
+        <Image src={Logo} alt="logo" className="w-45 p-4"></Image>
         <div className="p-6 font-bold text-xl ">Admin Panel</div>
         <nav className="flex-1 p-4 space-y-2">
           {links.map(link => (
@@ -73,7 +78,7 @@ export default function AdminLayout({ children }) {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`block px-4 py-2 rounded hover:bg-gray-800 ${pathname === link.href ? 'bg-gray-800 font-semibold' : ''
+                className={`block px-4 py-2 rounded hover:bg-base-200 ${pathname === link.href ? 'bg-base-300 font-semibold' : ''
                   }`}
                 onClick={() => setSidebarOpen(false)}
               >

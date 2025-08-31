@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Search, MapPin, Calendar, Users, DollarSign, ChevronDown } from "lucide-react";
+import { Search, MapPin, Calendar, Users, DollarSign, ChevronDown , Shield} from "lucide-react";
 import debounce from 'lodash/debounce';
 
 export default function JobsList({ jobs: initialJobs, search: initialSearch, session }) {
@@ -256,15 +256,16 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
                                     {/* Job Meta Information */}
                                     <div className="flex flex-wrap gap-2">
                                         <span className="flex items-center bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs font-medium">
-                                            <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
+                                            
+                                            <MapPin className="w-4 h-4 mr-1" />
                                             Remote
                                         </span>
                                         <span className="flex items-center bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-medium">
-                                            <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
+                                            <Shield className="w-4 h-4 mr-1" />
                                             {job.level || 'Senior level'}
                                         </span>
                                         <span className="flex items-center bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-medium">
-                                            <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                                           <Users className="w-4 h-4 mr-1" />
                                             {job.hiringCount || '2'} Freelancer
                                         </span>
                                     </div>
@@ -301,9 +302,9 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
                                     </div>
 
                                     {/* Apply Button */}
-                                    <button className="btn border-0 bg-black hover:bg-green-500 text-white font-semibold py-3 rounded-full transition-all duration-300 group-hover:shadow-lg">
+                                    <Link href={`/jobs/${job._id}`} className="btn border-0 bg-black hover:bg-green-500 text-white font-semibold py-3 rounded-full transition-all duration-300 group-hover:shadow-lg">
                                         Apply Now
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         ))}

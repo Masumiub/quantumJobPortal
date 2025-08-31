@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import Logo from '../../../public/assets/logo.png'
-
+import { TbCategory } from "react-icons/tb";
 
 export default function Navbar() {
     const { data: session, status } = useSession();
@@ -40,7 +40,12 @@ export default function Navbar() {
                             <li><Link href='/jobs'>Jobs</Link></li>
                         </ul>
                     </div>
+                    <div className="flex gap-6 items-center">
+
+
                     <Link href="/" className=""> <Image src={Logo} alt="logo" className="w-full h-10"></Image> </Link>
+                    <button className="btn btn-sm rounded-full  border-1 border-green-500 bg-green-950 text-green-500 shadow-none hidden lg:flex"><TbCategory />Categories</button>
+                                    </div>
                 </div>
 
                 {
@@ -57,7 +62,7 @@ export default function Navbar() {
                 <div className="navbar-end">
 
                     <div className="bg-green-950/70 py-2 px-2  rounded-lg mr-4 hidden md:block">
-                        <select defaultValue="Freelancer" className="select w-30 text-white bg-green-800/20  mr-15">
+                        <select defaultValue="Freelancer" className="select w-30 text-white bg-green-800/20  mr-25">
                             <option>Freelancer</option>
                             <option>Recuriter</option>
                         </select>

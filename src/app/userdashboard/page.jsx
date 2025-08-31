@@ -85,7 +85,7 @@ export default function Dashboard() {
             {/* Profile Header */}
             <div className="text-center mb-6">
               <div className="relative inline-block mb-4">
-                <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center text-white text-4xl font-bold">
                   {session?.user?.name?.charAt(0)?.toUpperCase() || 'U'}
                 </div>
                 <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">

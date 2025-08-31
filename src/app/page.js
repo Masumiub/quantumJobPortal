@@ -1,6 +1,8 @@
 
 import { Search, Users, Briefcase, TrendingUp, Zap, Shield, Clock, Star, Plus, Minus, Check } from 'lucide-react';
 import Link from 'next/link';
+import TestimonialSection from './components/TestimonialSection';
+import FAQSection from './components/FAQSection';
 
 const Home = () => {
 
@@ -8,8 +10,6 @@ const Home = () => {
     <div className="min-h-screen bg-black text-white">
       {/* Header Component */}
       <header className="border-b border-gray-800">
-
-
         {/* Hero Section */}
         <header className="relative overflow-hidden border-b border-gray-800">
           {/* Green Glow Background Effects */}
@@ -74,37 +74,37 @@ const Home = () => {
             {/* Stats Counter */}
             <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
 
-            <div className="text-center p-8 rounded-2xl bg-gray-900/50 border border-gray-800 hover:border-green-500/50 transition-all group">
-              <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:shadow-green-500/50 transition-all">
-                <Briefcase className="w-8 h-8 text-green-400" />
+              <div className="text-center p-8 rounded-2xl bg-gray-900/50 border border-gray-800 hover:border-green-500/50 transition-all group">
+                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:shadow-green-500/50 transition-all">
+                  <Briefcase className="w-8 h-8 text-green-400" />
+                </div>
+                <h3 className="text-3xl font-bold text-green-400 mb-2">50K+</h3>
+                <p className="text-gray-400">Active Jobs</p>
               </div>
-              <h3 className="text-3xl font-bold text-green-400 mb-2">50K+</h3>
-              <p className="text-gray-400">Active Jobs</p>
-            </div>
 
-            <div className="text-center p-8 rounded-2xl bg-gray-900/50 border border-gray-800 hover:border-green-500/50 transition-all group">
-              <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:shadow-green-500/50 transition-all">
-                <Users className="w-8 h-8 text-green-400" />
+              <div className="text-center p-8 rounded-2xl bg-gray-900/50 border border-gray-800 hover:border-green-500/50 transition-all group">
+                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:shadow-green-500/50 transition-all">
+                  <Users className="w-8 h-8 text-green-400" />
+                </div>
+                <h3 className="text-3xl font-bold text-green-400 mb-2">100K+</h3>
+                <p className="text-gray-400">Job Seekers</p>
               </div>
-              <h3 className="text-3xl font-bold text-green-400 mb-2">100K+</h3>
-              <p className="text-gray-400">Job Seekers</p>
-            </div>
 
-            <div className="text-center p-8 rounded-2xl bg-gray-900/50 border border-gray-800 hover:border-green-500/50 transition-all group">
-              <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:shadow-green-500/50 transition-all">
-                <TrendingUp className="w-8 h-8 text-green-400" />
+              <div className="text-center p-8 rounded-2xl bg-gray-900/50 border border-gray-800 hover:border-green-500/50 transition-all group">
+                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:shadow-green-500/50 transition-all">
+                  <TrendingUp className="w-8 h-8 text-green-400" />
+                </div>
+                <h3 className="text-3xl font-bold text-green-400 mb-2">95%</h3>
+                <p className="text-gray-400">Success Rate</p>
               </div>
-              <h3 className="text-3xl font-bold text-green-400 mb-2">95%</h3>
-              <p className="text-gray-400">Success Rate</p>
-            </div>
 
-            <div className="text-center p-8 rounded-2xl bg-gray-900/50 border border-gray-800 hover:border-green-500/50 transition-all group">
-              <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:shadow-green-500/50 transition-all">
-                <Star className="w-8 h-8 text-green-400" />
+              <div className="text-center p-8 rounded-2xl bg-gray-900/50 border border-gray-800 hover:border-green-500/50 transition-all group">
+                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:shadow-green-500/50 transition-all">
+                  <Star className="w-8 h-8 text-green-400" />
+                </div>
+                <h3 className="text-3xl font-bold text-green-400 mb-2">5K+</h3>
+                <p className="text-gray-400">Companies</p>
               </div>
-              <h3 className="text-3xl font-bold text-green-400 mb-2">5K+</h3>
-              <p className="text-gray-400">Companies</p>
-            </div>
 
 
             </div>
@@ -209,9 +209,11 @@ const Home = () => {
                 ))}
               </ul>
 
-              <button className="w-full py-3 border border-gray-700 text-white rounded-lg hover:bg-gray-800 transition-colors">
-                Get Started
-              </button>
+              <Link href='/Login'>
+                <button className="w-full py-3 border border-gray-700 text-white rounded-lg hover:bg-gray-800 transition-colors">
+                  Get Started
+                </button>
+              </Link>
             </div>
 
             {/* Pro Plan */}
@@ -244,9 +246,12 @@ const Home = () => {
                 ))}
               </ul>
 
-              <button className="w-full py-3 bg-green-500 hover:bg-green-600 text-black rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-green-500/50">
-                Start Pro Trial
-              </button>
+              <Link href='/Login'>
+                <button className="w-full py-3 bg-green-500 hover:bg-green-600 text-black rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-green-500/50">
+                  Start Pro Trial
+                </button>
+              </Link>
+
             </div>
 
             {/* Enterprise Plan */}
@@ -273,15 +278,20 @@ const Home = () => {
                 ))}
               </ul>
 
-              <button className="w-full py-3 border border-gray-700 text-white rounded-lg hover:bg-gray-800 transition-colors">
-                Contact Sales
-              </button>
+              <Link href='/Login'>
+                <button className="w-full py-3 border border-gray-700 text-white rounded-lg hover:bg-gray-800 transition-colors">
+                  Contact Sales
+                </button>
+              </Link>
+
             </div>
           </div>
         </div>
       </section>
 
-      {/* Additional Features Section */}
+      <TestimonialSection></TestimonialSection>
+
+            {/* Additional Features Section */}
       <section className="py-20 bg-gradient-to-b from-black to-green-900/40">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -320,6 +330,11 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <FAQSection></FAQSection>
+
+
+      
 
 
 
