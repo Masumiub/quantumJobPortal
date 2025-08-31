@@ -393,7 +393,7 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
                                     </div>
 
                                     {/* Apply Button */}
-                                    <Link href={`/jobs/${job._id}`} className="btn border-0 bg-black hover:bg-green-500 text-white font-semibold py-3 rounded-full transition-all duration-300 group-hover:shadow-lg">
+                                    <Link href={`/jobs/${job._id}`} className="btn border-0 bg-black hover:bg-green-500 text-white font-semibold py-3 !rounded-full transition-all duration-300 group-hover:shadow-lg">
                                         Apply Now
                                     </Link>
                                 </div>
