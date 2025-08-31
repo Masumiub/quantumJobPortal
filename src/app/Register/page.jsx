@@ -272,7 +272,7 @@ export default function Register() {
             </button>
           </div>
 
-          <p className="text-center text-gray-400">By joining, you agree to the Fiverr Terms of Service and to occasionally receive emails from us. Please read our Privacy Policy to learn how we use your personal data.</p>
+          <p className="text-center text-sm text-gray-400">By joining, you agree to the Fiverr <span className="text-green-500 underline">Terms of Service</span>  and to occasionally receive emails from us. Please read our <span className="text-green-500 underline">Privacy Policy</span> to learn how we use your personal data.</p>
         </div>
 
         {/* Right Side - Image */}
