@@ -24,7 +24,7 @@ export default function Footer() {
                             Sign up, complete your profile, and start browsing projects. Submit proposals and communicate with clients to get hired.
                         </p>
                         <Link href='/Login'>
-                        <button className="btn btn-md border-0 shadow-none bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 mt-6 transition-colors rounded-full ">
+                        <button className="btn btn-md border-0 shadow-none bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 mt-6 transition-colors !rounded-full ">
                             Get Started
                         </button>
                         </Link>
