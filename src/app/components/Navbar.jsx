@@ -53,7 +53,7 @@ export default function Navbar() {
 
 
                     <Link href="/" className=""> <Image src={Logo} alt="logo" className="w-full h-10"></Image> </Link>
-                    <button className="btn btn-sm rounded-full  border-1 border-green-500 bg-green-950 text-green-500 shadow-none hidden lg:flex"><TbCategory />Categories</button>
+                    <button className="btn btn-sm !rounded-full  border-1 border-green-500 bg-green-950 text-green-500 shadow-none hidden lg:flex"><TbCategory />Categories</button>
                                     </div>
                 </div>
 
@@ -86,11 +86,11 @@ export default function Navbar() {
                                 Hi, {session.user.name || session.user.email}
                             </span>
                             {session.user.role === "user" && (
-                                <Link href="/userdashboard" className="btn  text-white bg-green-500 rounded-full mr-2 border-0 shadow-none btn-md">
+                                <Link href="/userdashboard" className="btn  text-white bg-green-500 !rounded-full mr-2 border-0 shadow-none btn-md">
                                     Dashboard
                                 </Link>
                             )}
-                            <button onClick={handleLogout} className="btn btn-md btn-outline rounded-full">
+                            <button onClick={handleLogout} className="btn btn-md btn-outline !rounded-full">
                                 Logout
                             </button>
                         </>
@@ -109,7 +109,7 @@ export default function Navbar() {
                                 LOGIN
                             </button>
                             <button
-                                className="btn text-white bg-green-500 rounded-full border-0 shadow-none btn-md"
+                                className="btn text-white bg-green-500 !rounded-full border-0 shadow-none btn-md"
                                 onClick={() => router.push("/Register")}
                             >
                                 Registration
