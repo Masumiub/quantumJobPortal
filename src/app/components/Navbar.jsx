@@ -70,7 +70,7 @@ export default function Navbar() {
 
                 <div className="navbar-end">
 
-                    <div className="bg-green-950/70 py-2 px-2  rounded-lg mr-4 hidden md:block">
+                    <div className="bg-green-950/70 py-2 px-2  rounded-lg mr-7 hidden md:block">
                         <select defaultValue="Freelancer" className="select w-30 text-white bg-green-800/20  mr-25">
                             <option>Freelancer</option>
                             <option>Recuriter</option>
