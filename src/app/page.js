@@ -154,7 +154,7 @@ const Home = () => {
               </div>
               <h3 className="text-2xl font-bold mb-4 text-green-400">Verified Companies</h3>
               <p className="text-gray-400 leading-relaxed">
-                Every company on our platform is thoroughly vetted. Apply with confidence knowing you're connecting with legitimate, reputable employers.
+                Every company on our platform is thoroughly vetted. Apply with confidence knowing you are connecting with legitimate, reputable employers.
               </p>
             </div>
 

@@ -91,7 +91,7 @@ export default function Login() {
           <div className="space-y-2 text-center">
             <h1 className="text-3xl font-bold text-white">Login your account</h1>
             <p className="text-gray-400">
-              Don't have an account?{" "}
+              Dont have an account?{" "}
               <Link 
                 href="/Register" 
                 className="text-green-400 hover:text-green-300 transition-colors relative z-20"

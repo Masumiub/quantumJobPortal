@@ -45,7 +45,7 @@ export async function PUT(request, { params }) {
     });
     
     if (!existingJob) {
-      return new Response(JSON.stringify({ error: "Job not found or you don't have permission to edit it" }), {
+      return new Response(JSON.stringify({ error: "Job not found or you dont have permission to edit it" }), {
         status: 404,
         headers: { "Content-Type": "application/json" },
       });
@@ -105,7 +105,7 @@ export async function DELETE(request, { params }) {
     });
     
     if (!existingJob) {
-      return new Response(JSON.stringify({ error: "Job not found or you don't have permission to delete it" }), {
+      return new Response(JSON.stringify({ error: "Job not found or you dont have permission to delete it" }), {
         status: 404,
         headers: { "Content-Type": "application/json" },
       });
