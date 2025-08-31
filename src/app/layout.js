@@ -35,7 +35,7 @@ export const metadata = {
   authors: [
     {
       name: "QuantumJobPortal Team",
-      url: "https://quantumjobportal.com",
+      url: "https://quantum-job-portal-pi.vercel.app/",
     },
   ],
   creator: "QuantumJobPortal",
@@ -45,7 +45,7 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://quantumjobportal.com'),
+  metadataBase: new URL('https://quantum-job-portal-pi.vercel.app/'),
   alternates: {
     canonical: '/',
     languages: {
@@ -55,7 +55,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://quantumjobportal.com',
+    url: 'https://quantum-job-portal-pi.vercel.app/',
     siteName: 'QuantumJobPortal',
     title: 'QuantumJobPortal - Find Your Dream Job',
     description: 'Discover your next career opportunity with QuantumJobPortal. Connect with top employers and find the perfect role.',
