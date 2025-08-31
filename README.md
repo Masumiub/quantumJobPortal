@@ -189,7 +189,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 If you have any questions or need help, please contact:
-- **Email**: support@quantumjobportal.com
+- **Email**: musfiquemasum@gmail.com
 - **GitHub Issues**: [Create an issue](https://github.com/Masumiub/quantumJobPortal/issues)
 
 ## Acknowledgments

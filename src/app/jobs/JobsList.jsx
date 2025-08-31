@@ -185,7 +185,7 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
                 </div>
 
                 {/* Decorative elements */}
-                <div className="absolute bottom-20 right-80 w-4 h-4 bg-green-400 rounded-full opacity-60"></div>
+                <div className="absolute bottom-10 right-120 w-5 h-5 bg-green-400 rounded-full opacity-60"></div>
                 <div className="absolute top-40 right-40 w-2 h-2 bg-green-300 rounded-full opacity-40"></div>
                 <div className="absolute bottom-20 left-20 w-3 h-3 bg-emerald-400 rounded-full opacity-50"></div>
 
@@ -207,7 +207,7 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
 
                             <input
                                 type="text"
-                                placeholder="Search jobs by title/company ..."
+                                placeholder="Search jobs by title/company..."
                                 value={search}
                                 onChange={handleSearchChange}
                                 onKeyDown={handleKeyPress}
@@ -224,7 +224,7 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
                             )}
 
                             
-                                <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 text-white bg-green-500 rounded-full p-1" />
+                                <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 text-white bg-green-500 rounded-full p-2" />
                             
                         </div>
 
