@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Eye, EyeOff, Mail, Lock, X } from "lucide-react";
 import Banner from '../../../public/assets/Banner.png'
 import Image from "next/image";
+import Swal from "sweetalert2";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -45,6 +46,13 @@ export default function Login() {
       if (result.error) {
         setError("Invalid email or password");
       } else {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login successful",
+          showConfirmButton: false,
+          timer: 1500
+        });
         router.push("/userdashboard");
       }
     } catch (error) {
@@ -114,7 +122,7 @@ export default function Login() {
                 <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 z-10" />
                 <input
                   type="email"
-                  value={email}
+                  value={email} 
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email Address"
                   className="w-full bg-black/30 border border-green-500/30 rounded-full pl-12 pr-4 py-4 text-white placeholder-gray-400 focus:border-green-400 focus:outline-none transition-colors relative z-10"

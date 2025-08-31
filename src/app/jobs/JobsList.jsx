@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Search, MapPin, Calendar, Users, DollarSign, ChevronDown , Shield} from "lucide-react";
+import { Search, MapPin, Calendar, Users, DollarSign, ChevronDown, Shield } from "lucide-react";
 import debounce from 'lodash/debounce';
 
 export default function JobsList({ jobs: initialJobs, search: initialSearch, session }) {
@@ -11,12 +11,38 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
     const [jobs, setJobs] = useState(initialJobs);
     const [filteredJobs, setFilteredJobs] = useState(initialJobs);
     const [isSearching, setIsSearching] = useState(false);
-    const [selectedCategory, setSelectedCategory] = useState("Web Developer");
+    const [selectedCategory, setSelectedCategory] = useState("all");
     const router = useRouter();
+
+
+    // Filter jobs based on search and category
+    const filterJobs = useCallback((jobsList, searchValue, category) => {
+        let filtered = jobsList;
+
+        // Filter by category if not "all"
+        if (category !== "all") {
+            filtered = filtered.filter(job =>
+                job.category?.toLowerCase() === category.toLowerCase()
+            );
+        }
+
+        // Filter by search if provided
+        if (searchValue.trim()) {
+            filtered = filtered.filter(job =>
+                job.title?.toLowerCase().includes(searchValue.toLowerCase()) ||
+                job.company?.toLowerCase().includes(searchValue.toLowerCase()) ||
+                job.location?.toLowerCase().includes(searchValue.toLowerCase()) ||
+                job.description?.toLowerCase().includes(searchValue.toLowerCase()) ||
+                job.tags?.some(tag => tag.toLowerCase().includes(searchValue.toLowerCase()))
+            );
+        }
+
+        return filtered;
+    }, []);
 
     // Debounced search function
     const debouncedSearch = useCallback(
-        debounce((searchValue) => {
+        debounce((searchValue, category) => {
             if (!searchValue.trim()) {
                 setFilteredJobs(jobs);
                 setIsSearching(false);
@@ -33,7 +59,7 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
             setFilteredJobs(filtered);
             setIsSearching(false);
         }, 300),
-        [jobs]
+        [jobs, filterJobs]
     );
 
     // Handle search input change
@@ -41,7 +67,31 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
         const value = e.target.value;
         setSearch(value);
         setIsSearching(true);
-        debouncedSearch(value);
+        debouncedSearch(value, selectedCategory);
+    };
+
+
+    // Handle category change
+    const handleCategoryChange = (e) => {
+        const category = e.target.value;
+        setSelectedCategory(category);
+        setIsSearching(true);
+
+        // Update URL with category parameter
+        const params = new URLSearchParams();
+        if (search) {
+            params.set('search', search);
+        }
+        if (category !== "all") {
+            params.set('category', category);
+        }
+
+        router.push(`/jobs?${params.toString()}`);
+
+        // Filter jobs based on the selected category
+        const filtered = filterJobs(jobs, search, category);
+        setFilteredJobs(filtered);
+        setIsSearching(false);
     };
 
     // Handle form submission (Enter key)
@@ -59,7 +109,7 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
 
         // Fetch search results from API for more comprehensive search
         try {
-            const response = await fetch(`/api/jobs/public?search=${encodeURIComponent(search)}`);
+            const response = await fetch(`/api/jobs/public?search=${encodeURIComponent(search)}&category=${selectedCategory}`);
             if (response.ok) {
                 const searchResults = await response.json();
                 setJobs(searchResults);
@@ -75,10 +125,15 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
     // Handle clear search
     const handleClearSearch = () => {
         setSearch("");
-        setFilteredJobs(jobs);
+        const filtered = filterJobs(jobs, "", selectedCategory);
+        setFilteredJobs(filtered);
 
-        // Update URL to remove search parameter
+
+        // Update URL to keep category but remove search parameter
         const params = new URLSearchParams();
+        if (selectedCategory !== "all") {
+            params.set('category', selectedCategory);
+        }
         router.push(`/jobs?${params.toString()}`);
     };
 
@@ -89,10 +144,12 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
         }
     };
 
+
     // Update filtered jobs when jobs prop changes
     useEffect(() => {
-        setFilteredJobs(jobs);
-    }, [jobs]);
+        const filtered = filterJobs(jobs, search, selectedCategory);
+        setFilteredJobs(filtered);
+    }, [jobs, search, selectedCategory, filterJobs]);
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -102,6 +159,19 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
             year: 'numeric'
         }).format(date);
     };
+
+
+    const categories = [
+        { value: "all", label: "All Categories" },
+        { value: "design-creative", label: "Design & Creative" },
+        { value: "development-it", label: "Development & IT" },
+        { value: "music-audio", label: "Music & Audio" },
+        { value: "programming-tech", label: "Programming & Tech" },
+        { value: "marketing-sales", label: "Marketing & Sales" },
+        { value: "writing-translation", label: "Writing & Translation" },
+        { value: "other", label: "Other" }
+    ];
+
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -115,7 +185,7 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
                 </div>
 
                 {/* Decorative elements */}
-                <div className="absolute top-20 right-20 w-4 h-4 bg-green-400 rounded-full opacity-60"></div>
+                <div className="absolute bottom-20 right-80 w-4 h-4 bg-green-400 rounded-full opacity-60"></div>
                 <div className="absolute top-40 right-40 w-2 h-2 bg-green-300 rounded-full opacity-40"></div>
                 <div className="absolute bottom-20 left-20 w-3 h-3 bg-emerald-400 rounded-full opacity-50"></div>
 
@@ -131,46 +201,67 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
 
                     {/* Search Section */}
 
-                        <form onSubmit={handleSearchSubmit} className="flex flex-col lg:flex-row gap-4 max-w-3xl">
-                            {/* Search Input Container */}
-                            <div className="flex-1 relative">
-                                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                                <input
-                                    type="text"
-                                    placeholder="Search jobs by title, company, location, or skills..."
-                                    value={search}
-                                    onChange={handleSearchChange}
-                                    onKeyDown={handleKeyPress}
-                                    className="w-full bg-transparent border-2 border-green-500/30 rounded-2xl pl-12 pr-10 py-4 text-white placeholder-gray-400 focus:border-green-400 focus:outline-none transition-colors"
-                                />
-                                {search && (
-                                    <button
-                                        type="button"
-                                        onClick={handleClearSearch}
-                                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
-                                    >
-                                        ×
-                                    </button>
-                                )}
-                            </div>
+                    <form onSubmit={handleSearchSubmit} className="flex flex-col lg:flex-row gap-2 max-w-3xl">
+                        {/* Search Input Container */}
+                        <div className="flex-1 relative">
 
-                            {/* Search Button */}
-                            <button
-                                type="submit"
-                                disabled={isSearching}
-                                className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-4 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[120px]"
+                            <input
+                                type="text"
+                                placeholder="Search jobs by title/company ..."
+                                value={search}
+                                onChange={handleSearchChange}
+                                onKeyDown={handleKeyPress}
+                                className="w-full bg-transparent border-2 border-green-500/30 rounded-2xl pl-4 pr-10 py-4 text-white placeholder-gray-400 focus:border-green-400 focus:outline-none transition-colors"
+                            />
+                            {search && (
+                                <button
+                                    type="button"
+                                    onClick={handleClearSearch}
+                                    className="absolute right-15 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                                >
+                                    ×
+                                </button>
+                            )}
+
+                            
+                                <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 text-white bg-green-500 rounded-full p-1" />
+                            
+                        </div>
+
+                        <div className="relative">
+                            <select
+                                value={selectedCategory}
+                                onChange={(e) => setSelectedCategory(e.target.value)}
+                                className="bg-transparent border-2 border-green-500/30 rounded-2xl px-6 py-4 text-white appearance-none cursor-pointer focus:border-green-400 focus:outline-none transition-colors min-w-[200px]"
                             >
-                                {isSearching ? (
-                                    <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
-                                ) : (
-                                    <>
-                                        <Search className="w-5 h-5 mr-2" />
-                                        Advance Search
-                                    </>
-                                )}
-                            </button>
-                        </form>
-                    
+                                {categories.map((cat) => (
+                                    <option key={cat.value} value={cat.value}>
+                                        {cat.label}
+                                    </option>
+                                ))}
+                            </select>
+                            <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                        </div>
+
+
+
+                        {/* Search Button */}
+                        <button
+                            type="submit"
+                            disabled={isSearching}
+                            className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-4 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[120px]"
+                        >
+                            {isSearching ? (
+                                <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
+                            ) : (
+                                <>
+                                    <Search className="w-5 h-5 mr-2" />
+                                    Advance Search
+                                </>
+                            )}
+                        </button>
+                    </form>
+
                 </div>
             </div>
 
@@ -256,7 +347,7 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
                                     {/* Job Meta Information */}
                                     <div className="flex flex-wrap gap-2">
                                         <span className="flex items-center bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs font-medium">
-                                            
+
                                             <MapPin className="w-4 h-4 mr-1" />
                                             Remote
                                         </span>
@@ -265,7 +356,7 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
                                             {job.level || 'Senior level'}
                                         </span>
                                         <span className="flex items-center bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-medium">
-                                           <Users className="w-4 h-4 mr-1" />
+                                            <Users className="w-4 h-4 mr-1" />
                                             {job.hiringCount || '2'} Freelancer
                                         </span>
                                     </div>

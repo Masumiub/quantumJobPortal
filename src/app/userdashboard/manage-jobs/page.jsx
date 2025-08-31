@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Swal from "sweetalert2";
 
 export default function ManageJobs() {
   const [jobs, setJobs] = useState([]);
@@ -36,8 +37,15 @@ export default function ManageJobs() {
         const response = await fetch(`/api/jobs/${id}`, {
           method: "DELETE",
         });
-        
+
         if (response.ok) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Job Deletion successful!",
+            showConfirmButton: false,
+            timer: 1500
+          });
           setJobs(jobs.filter(job => job._id !== id));
         } else {
           const data = await response.json();
@@ -50,7 +58,7 @@ export default function ManageJobs() {
   };
 
   const openEditModal = (job) => {
-    setEditingJob({...job});
+    setEditingJob({ ...job });
   };
 
   const closeEditModal = () => {
@@ -60,16 +68,16 @@ export default function ManageJobs() {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
-      const requirementsArray = editingJob.requirements 
+      const requirementsArray = editingJob.requirements
         ? editingJob.requirements.split("\n").filter(req => req.trim() !== "")
         : [];
-      
-      const tagsArray = editingJob.tags 
+
+      const tagsArray = editingJob.tags
         ? editingJob.tags.split(",").map(tag => tag.trim()).filter(tag => tag !== "")
         : [];
-      
+
       const response = await fetch(`/api/jobs/${editingJob._id}`, {
         method: "PUT",
         headers: {
@@ -87,10 +95,19 @@ export default function ManageJobs() {
           tags: tagsArray,
         }),
       });
-      
+
       if (response.ok) {
         const updatedJob = await response.json();
         setJobs(jobs.map(job => job._id === updatedJob._id ? updatedJob : job));
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Job Update successful!",
+          showConfirmButton: false,
+          timer: 1500
+        });
+
         closeEditModal();
       } else {
         const data = await response.json();
@@ -117,12 +134,12 @@ export default function ManageJobs() {
   return (
     <div>
       <h2 className="text-2xl font-bold mb-6">Manage Jobs</h2>
-      
+
       {jobs.length === 0 ? (
         <div className="text-center p-8">
           <p className="text-gray-600 mb-4">You haven't posted any jobs yet.</p>
-          <Link 
-            href="/userdashboard/create-job" 
+          <Link
+            href="/userdashboard/create-job"
             className="bg-blue-600 text-white px-4 py-2 rounded"
           >
             Create Your First Job
@@ -161,7 +178,7 @@ export default function ManageJobs() {
                     <td>{job.salary || "Not specified"}</td>
                     <td>
                       <div className="flex space-x-2">
-                        <button 
+                        <button
                           onClick={() => openEditModal({
                             ...job,
                             requirements: job.requirements.join("\n"),
@@ -171,7 +188,7 @@ export default function ManageJobs() {
                         >
                           Edit
                         </button>
-                        <button 
+                        <button
                           onClick={() => handleDelete(job._id)}
                           className="btn btn-sm btn-error rounded-full text-white"
                         >
@@ -190,7 +207,7 @@ export default function ManageJobs() {
             <dialog id="edit_modal" className="modal modal-open">
               <div className="modal-box max-w-4xl">
                 <h3 className="font-bold text-lg mb-4">Edit Job</h3>
-                
+
                 <form onSubmit={handleEditSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -206,7 +223,7 @@ export default function ManageJobs() {
                         required
                       />
                     </div>
-                    
+
                     <div>
                       <label className="label">
                         <span className="label-text">Company</span>
@@ -221,7 +238,7 @@ export default function ManageJobs() {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="label">
@@ -236,7 +253,7 @@ export default function ManageJobs() {
                         required
                       />
                     </div>
-                    
+
                     <div>
                       <label className="label">
                         <span className="label-text">Level</span>
@@ -254,7 +271,7 @@ export default function ManageJobs() {
                       </select>
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="label">
@@ -270,7 +287,7 @@ export default function ManageJobs() {
                         required
                       />
                     </div>
-                    
+
                     <div>
                       <label className="label">
                         <span className="label-text">Salary</span>
@@ -285,7 +302,7 @@ export default function ManageJobs() {
                       />
                     </div>
                   </div>
-                  
+
                   <div>
                     <label className="label">
                       <span className="label-text">Tags (comma separated)</span>
@@ -299,7 +316,7 @@ export default function ManageJobs() {
                       placeholder="e.g., React, Node.js, MongoDB"
                     />
                   </div>
-                  
+
                   <div>
                     <label className="label">
                       <span className="label-text">Description</span>
@@ -312,7 +329,7 @@ export default function ManageJobs() {
                       rows="3"
                     />
                   </div>
-                  
+
                   <div>
                     <label className="label">
                       <span className="label-text">Requirements (one per line)</span>
@@ -325,7 +342,7 @@ export default function ManageJobs() {
                       rows="3"
                     />
                   </div>
-                  
+
                   <div className="modal-action">
                     <button
                       type="submit"
@@ -344,7 +361,7 @@ export default function ManageJobs() {
                   </div>
                 </form>
               </div>
-              
+
               {/* Close modal when clicking on backdrop */}
               <form method="dialog" className="modal-backdrop">
                 <button onClick={closeEditModal}>close</button>

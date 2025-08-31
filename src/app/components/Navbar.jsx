@@ -7,6 +7,7 @@ import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import Logo from '../../../public/assets/logo.png'
 import { TbCategory } from "react-icons/tb";
+import Swal from "sweetalert2";
 
 export default function Navbar() {
     const { data: session, status } = useSession();
@@ -20,6 +21,13 @@ export default function Navbar() {
 
     const handleLogout = async () => {
         await signOut({ redirect: false });
+                                Swal.fire({
+                                  position: "top-end",
+                                  icon: "success",
+                                  title: "Logged Out successfully!",
+                                  showConfirmButton: false,
+                                  timer: 1500
+                                });
         router.push("/");
     };
 
@@ -38,6 +46,7 @@ export default function Navbar() {
                             className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <li><Link href='/'>Home</Link></li>
                             <li><Link href='/jobs'>Jobs</Link></li>
+                            <li><Link href='/Login'>Become a Seller</Link></li>
                         </ul>
                     </div>
                     <div className="flex gap-6 items-center">
@@ -88,7 +97,7 @@ export default function Navbar() {
                     ) : (
                         <>
                             <button
-                                className="mr-8 text-green-400"
+                                className="mr-8 text-green-400 hidden lg:block"
                                 onClick={() => router.push("/Login")}
                             >
                                 BECAME A SELLER

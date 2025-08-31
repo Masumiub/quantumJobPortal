@@ -49,13 +49,13 @@ export default function ContactUs() {
     {
       icon: <Mail className="w-6 h-6 text-green-400" />,
       title: "Email Us",
-      content: "support@quantumjobportal.com",
+      content: "musfiquemasum@gmail.com",
       description: "Send us an email anytime"
     },
     {
       icon: <Phone className="w-6 h-6 text-green-400" />,
       title: "Call Us",
-      content: "+1 (555) 123-4567",
+      content: "+8801632225325",
       description: "Mon-Fri from 8am to 6pm"
     },
     {

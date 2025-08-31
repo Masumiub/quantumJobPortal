@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Eye, EyeOff, Mail, Lock, User, X } from "lucide-react";
 import Banner from '../../../public/assets/Banner.png';
 import Image from "next/image";
+import Swal from "sweetalert2";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -58,6 +59,14 @@ export default function Register() {
       });
 
       if (response.ok) {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Account Creation successful, Now Login",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+
         router.push("/Login");
       } else {
         const data = await response.json();
