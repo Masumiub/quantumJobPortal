@@ -29,7 +29,7 @@ const Home = () => {
           <div className="container relative z-10 mx-auto px-6 py-24 text-center">
             {/* Animated Title */}
             <div className="mb-8">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 transform hover:scale-105 transition-transform duration-700">
+              <h1 className="text-5xl md:text-7xl lg:text-7xl font-bold mb-6 transform hover:scale-105 transition-transform duration-700">
                 Find Your{' '}
                 <span className="relative">
                   <span className="bg-gradient-to-r from-green-400 via-green-500 to-emerald-400 bg-clip-text text-transparent animate-gradient">

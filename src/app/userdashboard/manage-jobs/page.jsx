@@ -111,7 +111,7 @@ export default function ManageJobs() {
     });
   };
 
-  if (loading) return <div className="text-center p-8">Loading...</div>;
+  if (loading) return <div className="text-center p-8"><span className="loading loading-spinner loading-sm"></span></div>;
   if (error) return <div className="text-red-500 text-center p-8">{error}</div>;
 
   return (

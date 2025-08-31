@@ -59,13 +59,13 @@ export default function Footer() {
                         <nav className="space-y-2 px-10 pb-15">
                             <h6 className="text-white font-semibold text-lg">About</h6>
                             <div className="space-y-3">
-                                <Link href="/about" className="block text-gray-400 hover:text-white transition-colors text-sm">
+                                <Link href="/" className="block text-gray-400 hover:text-white transition-colors text-sm">
                                     About Us
                                 </Link>
-                                <Link href="/become-seller" className="block text-gray-400 hover:text-white transition-colors text-sm">
+                                <Link href="/Register" className="block text-gray-400 hover:text-white transition-colors text-sm">
                                     Become Seller
                                 </Link>
-                                <Link href="/projobs" className="block text-gray-400 hover:text-white transition-colors text-sm">
+                                <Link href="/jobs" className="block text-gray-400 hover:text-white transition-colors text-sm">
                                     ProJobs
                                 </Link>
                             </div>
@@ -75,16 +75,16 @@ export default function Footer() {
                         <nav className="space-y-2 border-b-1 border-l-1 border-gray-800 px-10 pb-15">
                             <h6 className="text-white font-semibold text-lg">Categories</h6>
                             <div className="space-y-3">
-                                <Link href="/design-creative" className="block text-gray-400 hover:text-white transition-colors text-sm">
+                                <Link href="/jobs" className="block text-gray-400 hover:text-white transition-colors text-sm">
                                     Design & Creative
                                 </Link>
-                                <Link href="/development-it" className="block text-gray-400 hover:text-white transition-colors text-sm">
+                                <Link href="/jobs" className="block text-gray-400 hover:text-white transition-colors text-sm">
                                     Development & IT
                                 </Link>
-                                <Link href="/music-audio" className="block text-gray-400 hover:text-white transition-colors text-sm">
+                                <Link href="/jobs" className="block text-gray-400 hover:text-white transition-colors text-sm">
                                     Music & Audio
                                 </Link>
-                                <Link href="/programming-tech" className="block text-gray-400 hover:text-white transition-colors text-sm">
+                                <Link href="/jobs" className="block text-gray-400 hover:text-white transition-colors text-sm">
                                     Programming & Tech
                                 </Link>
                             </div>
@@ -94,16 +94,16 @@ export default function Footer() {
                         <nav className="space-y-2 border-b-1 border-l-1 border-gray-800 px-10 pb-10">
                             <h6 className="text-white font-semibold text-lg">Support</h6>
                             <div className="space-y-3">
-                                <Link href="/help" className="block text-gray-400 hover:text-white transition-colors text-sm">
+                                <Link href="/contact" className="block text-gray-400 hover:text-white transition-colors text-sm">
                                     Help & Support
                                 </Link>
-                                <Link href="/faq" className="block text-gray-400 hover:text-white transition-colors text-sm">
+                                <Link href="/" className="block text-gray-400 hover:text-white transition-colors text-sm">
                                     FAQ
                                 </Link>
                                 <Link href="/contact" className="block text-gray-400 hover:text-white transition-colors text-sm">
                                     Contact Us
                                 </Link>
-                                <Link href="/terms" className="block text-gray-400 hover:text-white transition-colors text-sm">
+                                <Link href="/" className="block text-gray-400 hover:text-white transition-colors text-sm">
                                     Terms & Services
                                 </Link>
                             </div>
