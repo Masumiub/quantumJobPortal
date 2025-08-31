@@ -70,9 +70,9 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen  flex items-center justify-center p-4">
+    <div className="min-h-screen  flex items-center justify-center p-4 mb-20">
       {/* Login Modal */}
-      <div className="bg-black rounded-3xl shadow-2xl overflow-hidden max-w-5xl w-full grid grid-cols-1 lg:grid-cols-2 gap-10 relative border border-cyan-400/50 px-15 py-10 mt-15">
+      <div className="bg-black rounded-3xl shadow-2xl overflow-hidden max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-10 relative border border-cyan-400/50 px-15 py-10 mt-15">
         {/* Background gradients - moved behind content */}
         <div className="absolute inset-0 bg-gradient-radial from-green-500/20 via-green-500/20 to-transparent -z-10"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-500/30 rounded-full blur-3xl -z-10"></div>

@@ -55,11 +55,20 @@ export default function Navbar() {
                 }
 
                 <div className="navbar-end">
+
+                    <div className="bg-green-950/70 py-2 px-2  rounded-lg mr-4 hidden md:block">
+                        <select defaultValue="Freelancer" className="select w-30 text-white bg-green-800/20  mr-15">
+                            <option>Freelancer</option>
+                            <option>Recuriter</option>
+                        </select>
+                    </div>
+
+
                     {status === "loading" ? (
                         <span className="loading loading-spinner loading-sm"></span>
                     ) : session ? (
                         <>
-                            <span className="hidden md:inline mr-2">
+                            <span className="hidden md:inline mr-2 text-right">
                                 Hi, {session.user.name || session.user.email}
                             </span>
                             {session.user.role === "user" && (

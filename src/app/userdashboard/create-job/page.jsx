@@ -68,7 +68,7 @@ export default function CreateJob() {
 
   return (
     <div className="max-w-2xl">
-      <h2 className="text-2xl font-bold mb-6">Create New Job</h2>
+      <h2 className="text-3xl font-bold mb-6 text-green-500">Create New Job</h2>
       
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
@@ -186,7 +186,7 @@ export default function CreateJob() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-blue-600 text-white px-4 py-2 rounded disabled:opacity-50"
+            className="bg-green-500 text-white px-4 py-2 rounded disabled:opacity-50"
           >
             {isSubmitting ? "Creating..." : "Create Job"}
           </button>

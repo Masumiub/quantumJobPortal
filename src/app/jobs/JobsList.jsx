@@ -141,7 +141,7 @@ export default function JobsList({ jobs: initialJobs, search: initialSearch, ses
                                     value={search}
                                     onChange={handleSearchChange}
                                     onKeyDown={handleKeyPress}
-                                    className="w-full bg-transparent border border-green-500/30 rounded-full pl-12 pr-10 py-4 text-white placeholder-gray-400 focus:border-green-400 focus:outline-none transition-colors"
+                                    className="w-full bg-transparent border-2 border-green-500/30 rounded-2xl pl-12 pr-10 py-4 text-white placeholder-gray-400 focus:border-green-400 focus:outline-none transition-colors"
                                 />
                                 {search && (
                                     <button
