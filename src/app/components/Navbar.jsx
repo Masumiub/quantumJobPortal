@@ -100,7 +100,7 @@ export default function Navbar() {
                                 className="mr-8 text-green-400 hidden lg:block"
                                 onClick={() => router.push("/Login")}
                             >
-                                BECAME A SELLER
+                                BECOME A SELLER
                             </button>
                             <button
                                 className="mr-8"
