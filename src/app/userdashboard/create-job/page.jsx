@@ -100,7 +100,7 @@ export default function CreateJob() {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-gray-700 mb-2 font-semibold">Job Title *</label>
+            <label className="block text-gray-500 mb-2 font-semibold">Job Title *</label>
             <input
               type="text"
               value={title}
@@ -112,7 +112,7 @@ export default function CreateJob() {
           </div>
           
           <div>
-            <label className="block text-gray-700 mb-2 font-semibold">Company *</label>
+            <label className="block text-gray-500 mb-2 font-semibold">Company *</label>
             <input
               type="text"
               value={company}
@@ -126,7 +126,7 @@ export default function CreateJob() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-gray-700 mb-2 font-semibold">Location *</label>
+            <label className="block text-gray-500 mb-2 font-semibold">Location *</label>
             <input
               type="text"
               value={location}
@@ -138,7 +138,7 @@ export default function CreateJob() {
           </div>
           
           <div>
-            <label className="block text-gray-700 mb-2 font-semibold">Salary</label>
+            <label className="block text-gray-500 mb-2 font-semibold">Salary</label>
             <input
               type="text"
               value={salary}
@@ -151,11 +151,11 @@ export default function CreateJob() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-gray-700 mb-2 font-semibold">Level *</label>
+            <label className="block text-gray-500 mb-2 font-semibold">Level *</label>
             <select
               value={level}
               onChange={(e) => setLevel(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent "
               required
             >
               <option value="junior">Junior</option>
@@ -167,11 +167,11 @@ export default function CreateJob() {
           </div>
           
           <div>
-            <label className="block text-gray-700 mb-2 font-semibold">Category *</label>
+            <label className="block text-gray-500 mb-2 font-semibold">Category *</label>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent "
               required
             >
               {categories.map((cat) => (
@@ -185,7 +185,7 @@ export default function CreateJob() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-gray-700 mb-2 font-semibold">Hiring Count *</label>
+            <label className="block text-gray-500 mb-2 font-semibold">Hiring Count *</label>
             <input
               type="number"
               min="1"
@@ -198,7 +198,7 @@ export default function CreateJob() {
           </div>
           
           <div>
-            <label className="block text-gray-700 mb-2 font-semibold">Tags (comma separated)</label>
+            <label className="block text-gray-500 mb-2 font-semibold">Tags (comma separated)</label>
             <input
               type="text"
               value={tags}
@@ -210,7 +210,7 @@ export default function CreateJob() {
         </div>
         
         <div>
-          <label className="block text-gray-700 mb-2 font-semibold">Description *</label>
+          <label className="block text-gray-500 mb-2 font-semibold">Description *</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -222,7 +222,7 @@ export default function CreateJob() {
         </div>
         
         <div>
-          <label className="block text-gray-700 mb-2 font-semibold">
+          <label className="block text-gray-500 mb-2 font-semibold">
             Requirements (one per line) *
           </label>
           <textarea
@@ -257,7 +257,7 @@ Experience with databases"
           <button
             type="button"
             onClick={() => router.push("/userdashboard/manage-jobs")}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold px-8 py-3 rounded-lg transition-colors"
+            className="bg-gray-300 hover:bg-gray-400 text-gray-500 font-semibold px-8 py-3 rounded-lg transition-colors"
           >
             Cancel
           </button>

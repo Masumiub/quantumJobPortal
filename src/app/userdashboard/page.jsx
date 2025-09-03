@@ -69,13 +69,13 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6">
+    <div className="min-h-screen bg-base-100 p-6">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+        <h1 className="text-3xl md:text-4xl font-bold  mb-2">
           Welcome back, <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">{session?.user?.name}</span>
         </h1>
-        <p className="text-gray-600">Here's what's happening with your job portal today</p>
+        <p className="">Here's what's happening with your job portal today</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -93,10 +93,10 @@ export default function Dashboard() {
                 </div>
               </div>
               
-              <h2 className="text-xl font-semibold text-gray-800">{session?.user?.name}</h2>
+              <h2 className="text-xl font-semibold text-black">{session?.user?.name}</h2>
               <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full mt-2 ${getRoleColor(session?.user?.role)}`}>
                 {getRoleIcon(session?.user?.role)}
-                <span className="text-sm font-medium capitalize">{session?.user?.role || 'user'}</span>
+                <span className="text-sm font-medium capitalize ">{session?.user?.role || 'user'}</span>
               </div>
             </div>
 
@@ -105,23 +105,23 @@ export default function Dashboard() {
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                 <Mail className="w-5 h-5 text-gray-400" />
                 <div>
-                  <p className="text-sm text-gray-600">Email</p>
-                  <p className="text-gray-800 text-xs xl:text-lg">{session?.user?.email}</p>
+                  <p className="text-sm text-black">Email</p>
+                  <p className=" text-xs xl:text-lg text-black">{session?.user?.email}</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                 <Calendar className="w-5 h-5 text-gray-400" />
                 <div>
-                  <p className="text-sm text-gray-600">Member since</p>
-                  <p className="text-gray-800 font-medium">January 2024</p>
+                  <p className="text-sm text-black">Member since</p>
+                  <p className=" font-medium text-black">January 2024</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                 <Target className="w-5 h-5 text-gray-400" />
                 <div>
-                  <p className="text-sm text-gray-600">Status</p>
+                  <p className="text-sm text-black">Status</p>
                   <p className="text-green-600 font-medium">Active</p>
                 </div>
               </div>
@@ -147,8 +147,8 @@ export default function Dashboard() {
             <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600 font-medium">Total Jobs</p>
-                  <p className="text-2xl font-bold text-gray-800">{stats.totalJobs}</p>
+                  <p className="text-sm text-black font-medium">Total Jobs</p>
+                  <p className="text-2xl font-bold text-black">{stats.totalJobs}</p>
                 </div>
                 <div className="p-3 bg-blue-500/10 rounded-lg">
                   <Briefcase className="w-6 h-6 text-blue-500" />
@@ -168,7 +168,7 @@ export default function Dashboard() {
             <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600 font-medium">Active Jobs</p>
+                  <p className="text-sm  font-medium text-black">Active Jobs</p>
                   <p className="text-2xl font-bold text-green-600">{stats.activeJobs}</p>
                 </div>
                 <div className="p-3 bg-green-500/10 rounded-lg">
@@ -189,7 +189,7 @@ export default function Dashboard() {
             <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600 font-medium">Applications</p>
+                  <p className="text-sm  font-medium text-black">Applications</p>
                   <p className="text-2xl font-bold text-purple-600">{stats.applications}</p>
                 </div>
                 <div className="p-3 bg-purple-500/10 rounded-lg">
@@ -210,7 +210,7 @@ export default function Dashboard() {
             <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600 font-medium">Interviews</p>
+                  <p className="text-sm  font-medium text-black">Interviews</p>
                   <p className="text-2xl font-bold text-orange-600">{stats.interviews}</p>
                 </div>
                 <div className="p-3 bg-orange-500/10 rounded-lg">
@@ -269,15 +269,15 @@ export default function Dashboard() {
 
           {/* Recent Activity */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">Recent Activity</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Recent Activity</h3>
             <div className="space-y-4">
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                 <div className="p-2 bg-green-100 rounded-full">
                   <Plus className="w-4 h-4 text-green-600" />
                 </div>
                 <div>
-                  <p className="font-medium">New job posted</p>
-                  <p className="text-sm text-gray-600">Senior Frontend Developer</p>
+                  <p className="font-medium text-black">New job posted</p>
+                  <p className="text-sm text-black">Senior Frontend Developer</p>
                 </div>
                 <span className="text-xs text-gray-500 ml-auto">2 hours ago</span>
               </div>
@@ -287,8 +287,8 @@ export default function Dashboard() {
                   <Users className="w-4 h-4 text-blue-600" />
                 </div>
                 <div>
-                  <p className="font-medium">New application</p>
-                  <p className="text-sm text-gray-6 00">John Doe applied to your job</p>
+                  <p className="font-medium text-black">New application</p>
+                  <p className="text-sm text-gray-6 00 text-black">John Doe applied to your job</p>
                 </div>
                 <span className="text-xs text-gray-500 ml-auto">5 hours ago</span>
               </div>
