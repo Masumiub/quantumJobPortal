@@ -106,7 +106,7 @@ export default function Dashboard() {
                 <Mail className="w-5 h-5 text-gray-400" />
                 <div>
                   <p className="text-sm text-gray-600">Email</p>
-                  <p className="text-gray-800 font-medium">{session?.user?.email}</p>
+                  <p className="text-gray-800 text-xs xl:text-lg">{session?.user?.email}</p>
                 </div>
               </div>
 
@@ -142,7 +142,7 @@ export default function Dashboard() {
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
             {/* Total Jobs */}
             <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between">
